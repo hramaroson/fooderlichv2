@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 import '../components/components.dart';
 import '../models/models.dart';
 
-class TodayRecipeListView extends StatelessWidget {
+class TodayRecipeListView extends StatelessWidget{
   final List<ExploreRecipe> recipes;
 
   const TodayRecipeListView({
     super.key,
-    required this.recipes,
+    required this.recipes
   });
 
   @override
@@ -17,14 +16,14 @@ class TodayRecipeListView extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: 16,
         right: 16,
-        top: 16,
-      ),
+        top: 16
+        ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Recipes of the Day 🍳',
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme.of(context).textTheme.displayMedium
           ),
           const SizedBox(height: 16),
           Container(
@@ -33,29 +32,30 @@ class TodayRecipeListView extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: recipes.length,
+
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
                 return buildCard(recipe);
               },
+
               separatorBuilder: (context, index) {
                 return const SizedBox(width: 16);
               },
             ),
-          ),
+          )
         ],
       ),
     );
   }
-
-  Widget buildCard(ExploreRecipe recipe) {
-    if (recipe.cardType == RecipeCardType.card1) {
+  Widget buildCard(ExploreRecipe recipe){
+    if(recipe.cardType == RecipeCardType.card1){
       return Card1(recipe: recipe);
-    } else if (recipe.cardType == RecipeCardType.card2) {
-      return Card2(recipe: recipe);
-    } else if (recipe.cardType == RecipeCardType.card3) {
-      return Card3(recipe: recipe);
+    } else if(recipe.cardType == RecipeCardType.card2){
+      return const Card2();
+    } else if(recipe.cardType == RecipeCardType.card3){
+      return const Card3();
     } else {
-      throw Exception("This card doesn't exist yet");
+      throw Exception('This card doesn\'t exist yet');
     }
   }
 }

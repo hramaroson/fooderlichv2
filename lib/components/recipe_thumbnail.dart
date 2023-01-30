@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../models/models.dart';
 
-class RecipeThumbnail extends StatelessWidget {
+class RecipeThumbnail extends StatelessWidget{
   final SimpleRecipe recipe;
 
   const RecipeThumbnail({
-    super.key,
-    required this.recipe,
-  });
-
+      super.key,
+      required this.recipe,
+    });
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,22 +22,22 @@ class RecipeThumbnail extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
                 recipe.dishImage,
-                fit: BoxFit.cover,
-              ),
+                fit: BoxFit.cover),
             ),
           ),
           const SizedBox(height: 10),
-          Text(
+          Text( 
             recipe.title,
             maxLines: 1,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           Text(
             recipe.duration,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
+            style: Theme.of(context).textTheme.bodyLarge,
+          )
         ],
       ),
+
     );
   }
 }
