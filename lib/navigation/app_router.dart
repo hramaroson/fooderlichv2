@@ -7,13 +7,12 @@ class AppRouter {
   final ProfileManager profileManager; 
   final GroceryManager groceryManager;
 
-  AppRouter({
-    required this.appStateManager,
-    required this.profileManager,
-    required this.groceryManager
-  });
+  AppRouter(
+    this.appStateManager,
+    this.profileManager,
+    this.groceryManager);
 
-  late final route = GoRouter(
+  late final router = GoRouter(
     debugLogDiagnostics: true,
     refreshListenable: appStateManager,
     initialLocation: '/login',
