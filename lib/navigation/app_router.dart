@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/models.dart';
@@ -21,8 +22,20 @@ class AppRouter {
       //TODO Add Login Route
       //TODO Add Onboarding Route
       //TODO Add Home Route
-    ]
-    //TODO Add Error Handler
+    ],
+    errorPageBuilder: (context, state) {
+      return MaterialPage(
+        key: state.pageKey,
+        child: Scaffold(
+          body: Center(
+            child: Text(
+              state.error.toString()
+            ),
+          ),
+        )
+      );
+
+    }
     //TODO Add Redirect Handler
   );
 }
