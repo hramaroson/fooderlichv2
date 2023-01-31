@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'fooderlich_theme.dart';
 import 'models/models.dart';
-import 'screens/screens.dart';
-// TODO: Import app_router
+import 'navigation/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,12 @@ class Fooderlich extends StatefulWidget {
 class FooderlichState extends State<Fooderlich> {
   late final _groceryManager = GroceryManager();
   late final _profileManager = ProfileManager();
-  // TODO: Initialize AppRouter
+  
+  late final _appRouter = AppRouter(
+    widget.appStateManager,
+    _profileManager,
+    _groceryManager
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +56,20 @@ class FooderlichState extends State<Fooderlich> {
             theme = FooderlichTheme.light();
           }
 
-          // TODO: Replace with Router
-          return MaterialApp(
+          // // TODO: Replace with Router
+          // return MaterialApp(
+          //   theme: theme,
+          //   title: 'Fooderlich V2',
+          //   home: const LoginScreen(),
+          // );
+
+          final router = _appRouter.router;
+          return MaterialApp.router(
             theme: theme,
             title: 'Fooderlich V2',
-            home: const LoginScreen(),
+            routerDelegate: router.routerDelegate,
+            routeInformationParser: router.routeInformationParser,
+            routeInformationProvider: router.routeInformationProvider,
           );
         },
       ),
