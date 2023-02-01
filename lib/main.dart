@@ -56,13 +56,6 @@ class FooderlichState extends State<Fooderlich> {
             theme = FooderlichTheme.light();
           }
 
-          // // TODO: Replace with Router
-          // return MaterialApp(
-          //   theme: theme,
-          //   title: 'Fooderlich V2',
-          //   home: const LoginScreen(),
-          // );
-
           final router = _appRouter.router;
           return MaterialApp.router(
             theme: theme,
