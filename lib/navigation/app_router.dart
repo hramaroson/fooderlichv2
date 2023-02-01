@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/models.dart';
+import '../screens/screens.dart';
 
 class AppRouter {
   final AppStateManager appStateManager;
@@ -19,7 +20,11 @@ class AppRouter {
     initialLocation: '/login',
 
     routes: [
-      //TODO Add Login Route
+      GoRoute(
+        name: 'login',
+        path: '/login',
+        builder: (context, state) => LoginScreen()
+      )
       //TODO Add Onboarding Route
       //TODO Add Home Route
     ],
