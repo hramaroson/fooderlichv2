@@ -35,7 +35,8 @@ class HomeState extends State<Home> {
           profileButton(widget.currentTab),
         ],
       ),
-      body: IndexedStack(index: widget.currentTab, children: pages),
+      body: pages[widget.currentTab],
+      //body: IndexedStack(index: widget.currentTab, children: pages),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         currentIndex: widget.currentTab,
