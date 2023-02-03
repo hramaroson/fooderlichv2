@@ -40,7 +40,24 @@ class AppRouter {
             currentTab: tab
           );
         }
-      )
+      ),
+      GoRoute(
+        name: 'item',
+        path: '/item/:id',
+        builder: (context, state) {
+          final itemId = state.params['id'] ?? '';
+          final item = groceryManager.getGroceryItem(itemId);
+
+          return GroceryItemScreen(
+            originalItem: item,
+            onCreate: (item){
+              groceryManager.addItem(item);
+            },
+            onUpdate: (item){
+              groceryManager.updateItem(item);
+            },
+          );
+        }),
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(
