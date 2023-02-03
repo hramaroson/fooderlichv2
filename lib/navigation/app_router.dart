@@ -62,10 +62,10 @@ class AppRouter {
         return loggingIn? null : '/login';
       }
 
-      final isOnboardlingComplete = appStateManager.isOnboardingComplete;
+      final isOnboardingComplete = appStateManager.isOnboardingComplete;
       final onboarding = state.subloc == '/onboarding';
 
-      if(!isOnboardlingComplete){
+      if(!isOnboardingComplete){
         return onboarding? null: '/onboarding';
       }
 
