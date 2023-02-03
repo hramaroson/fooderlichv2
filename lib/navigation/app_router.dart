@@ -39,25 +39,38 @@ class AppRouter {
             key: state.pageKey, 
             currentTab: tab
           );
-        }
-      ),
-      GoRoute(
-        name: 'item',
-        path: '/item/:id',
-        builder: (context, state) {
-          final itemId = state.params['id'] ?? '';
-          final item = groceryManager.getGroceryItem(itemId);
+        },
+        routes: [
+          GoRoute(
+            name: 'item',
+            path: 'item/:id',
+            builder: (context, state) {
+              final itemId = state.params['id'] ?? '';
+              final item = groceryManager.getGroceryItem(itemId);
 
-          return GroceryItemScreen(
-            originalItem: item,
-            onCreate: (item){
-              groceryManager.addItem(item);
-            },
-            onUpdate: (item){
-              groceryManager.updateItem(item);
-            },
-          );
-        }),
+              return GroceryItemScreen(
+                originalItem: item,
+                onCreate: (item){
+                  groceryManager.addItem(item);
+                 },
+                onUpdate: (item){
+                  groceryManager.updateItem(item);
+                },
+              );
+            }),
+          GoRoute(
+            name: 'profile',
+            path: 'profile',
+            builder: (context, state) {
+              final tab = int.tryParse(state.params['tab'] ?? '') ?? 0;
+              return ProfileScreen(
+                user: profileManager.getUser, 
+                currentTab: tab
+              );
+            }
+          )
+        ]
+      ),
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(
