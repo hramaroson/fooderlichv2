@@ -19,7 +19,7 @@ class EmptyGroceryScreen extends StatelessWidget {
             ),
             Text(
               'No Groceries',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16.0),
             const Text(
