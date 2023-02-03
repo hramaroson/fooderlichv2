@@ -41,7 +41,6 @@ class AppRouter {
           );
         }
       )
-      //TODO Add Home Route
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(
