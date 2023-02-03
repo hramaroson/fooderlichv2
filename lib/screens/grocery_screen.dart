@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../models/models.dart';
@@ -13,7 +14,13 @@ class GroceryScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          // TODO: Create New Item
+          context.goNamed(
+            'item', 
+            params: {
+              'tab' : '${FooderlichTab.toBuy}',
+              'id'  : 'new'
+            }
+          );
         },
       ),
       body: buildGroceryScreen(),
