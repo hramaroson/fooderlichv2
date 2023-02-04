@@ -67,7 +67,14 @@ class AppRouter {
                 user: profileManager.getUser, 
                 currentTab: tab
               );
-            }
+            },
+            routes: [
+              GoRoute(
+                name: 'rw',
+                path: 'rw',
+                builder: (context, state) => const WebViewScreen()
+              )
+            ]
           )
         ]
       ),
